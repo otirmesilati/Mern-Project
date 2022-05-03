@@ -4,7 +4,7 @@ import {useState} from 'react'
 import Axios from 'axios'
 import {test, menu} from './menu'
 function App() {
-  const [Email, akjefhkuaegfdkaebfkhqe ]= useState('')
+  const [Email, setEmaildData ]= useState('')
   const [Password, setPasswordData] = useState('')
 
   function passVariablesToBackend () {
@@ -30,7 +30,7 @@ function App() {
   
   return (
     <div className="App">
-      <input value={Email} onChange={event => {akjefhkuaegfdkaebfkhqe(event.target.value)}} type="email" placeholder='Email'></input>
+      <input value={Email} onChange={event => {setEmaildData(event.target.value)}} type="email" placeholder='Email'></input>
       <input value={Password} onChange={event => {setPasswordData(event.target.value)}} type="password" placeholder='Password'></input>
       <button onClick={() => {passVariablesToBackend()}}>Press here</button>
       <div id='test' >
