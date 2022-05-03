@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "node Server/src/index.js",
-    "start": "node Server/src/index.js",
+    "start_server": "node Server/src/index.js",
     "test": "mocha tests/*.spec.js --color",
     "lint": "eslint Server/src/* --color"
   },
@@ -20,6 +19,8 @@
   },
   "homepage": "https://github.com/otirmesilati/Team_8_Web_Project#readme",
   "dependencies": {
+    "body-parser": "^1.20.0",
+    "cors": "^2.8.5",
     "express": "^4.17.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
