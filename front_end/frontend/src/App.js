@@ -2,7 +2,9 @@ import logo from './logo.svg';
 import './App.css';
 import {useState} from 'react'
 import Axios from 'axios'
-import {test, menu} from './menu'
+import {Menu} from './MenuNavBar'
+import {SearchField} from './SearchField'
+
 function App() {
   const [Email, setEmaildData ]= useState('')
   const [Password, setPasswordData] = useState('')
@@ -29,14 +31,12 @@ function App() {
   }
   
   return (
-    <div className="App">
-      <input value={Email} onChange={event => {setEmaildData(event.target.value)}} type="email" placeholder='Email'></input>
-      <input value={Password} onChange={event => {setPasswordData(event.target.value)}} type="password" placeholder='Password'></input>
-      <button onClick={() => {passVariablesToBackend()}}>Press here</button>
-      <div id='test' >
-        
-      </div>
+    <div>
+        <Menu />
+        <SearchField />
     </div>
+
+
   );
 }
 
