@@ -1,17 +1,16 @@
 const express = require('express');
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 5001;
 const app = express();
 var cors = require('cors')
 app.use(cors())
 var bodyParser = require('body-parser')
- 
+const {searchLaundryMachines, searchTelevisions} = require('./mongoDB')
+
+
 
  
 // create application/json parser
 var jsonParser = bodyParser.json()
-app.get('/', (req, res) => {
-  res.send('<h1>Welcome to team 8s web page!</h1>');
-});
 
 app.post('/login', jsonParser, (req, res) => {
  console.log('Receiving data from frontend')
@@ -24,6 +23,19 @@ app.post('/login', jsonParser, (req, res) => {
   }
 })
 
+
+app.get('/getlaundrymachines', (req, res) => {
+  searchLaundryMachines({}).then((laundryMachines) => {
+    res.send(laundryMachines)
+  }).catch((machinesError) => {
+    console.log(machinesError)
+  })
+ })
+
 app.listen(port, () => {
   console.log('up goes the server');
 });
+
+
+
+

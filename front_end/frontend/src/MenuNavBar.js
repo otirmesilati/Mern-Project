@@ -1,13 +1,13 @@
 import React from 'react'
 import './MenuNavBar.css'
 
-export function Menu() {
-  return (
+export function Menu(params) {
 
+  return (
   <div class="topnav">
-  <a class="active" href="/">Home</a>
-  <a href="/laundrymachines">Laundry Machines</a>
-  <a href="/dryers">Dryers</a>
+  <a class="active" href="/" onClick={() => {params.setViewPage('home')}}>Home</a>
+  <a style={{cursor: 'pointer'}} onClick={() => {params.setViewPage('laundrymachines')}}>Laundry Machines</a>
+  <a style={{cursor: 'pointer'}} onClick={() => {params.setViewPage('dryers')}}>Dryers</a>
   <a href="/refrigerators">Refrigerators</a>
   <a href="/dish-washers">Dish Washers</a>
   <a href="/televisions">Televisions</a>
