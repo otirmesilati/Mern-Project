@@ -27,13 +27,24 @@ function searchLaundryMachines(object) {
 }
 exports.searchLaundryMachines = searchLaundryMachines;
 
-function searchTelevisions(object) {
-    client.connect(err => {
-        if(err) throw err
-        console.log('MongoDB Connected!'); 
-      // perform actions on the collection object
-      var collection = client.db("televisions").collection("televisions_c");
-      return collection.find(object)
-    });
+function searchDryers(object) {
+  async function run(object) {
+      try {
+        await client.connect();
+        var collection = client.db("dryers").collection("dryers_c")
+        // Query for a movie that has the title 'The Room'
+  
+  
+        const dryers = await collection.find(object);
+        // since this method returns the matched document, not a cursor, print it directly
+        return dryers.toArray()
+      }
+      catch(err) {
+       return err
+      }
+    }
+    return new Promise((resolve,reject) => {
+      resolve(run(object))
+    })  
 }
-exports.searchTelevisions = searchTelevisions;
+exports.searchDryers = searchDryers;

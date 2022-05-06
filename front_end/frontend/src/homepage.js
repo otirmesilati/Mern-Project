@@ -4,7 +4,7 @@ import { SearchField } from './SearchField'
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { LaundryMachines } from './laundryMachines'
 import { Promotions } from './Promotions';
-import { Dryers } from './Dryers';
+import { Dryers } from './dryers';
 
 export function Homepage() {
   const [viewPage, setViewPage] = useState('home')
