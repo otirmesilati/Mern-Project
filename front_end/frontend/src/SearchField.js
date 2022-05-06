@@ -9,6 +9,9 @@ export function SearchField() {
       <input type="text" placeholder="Search product by name.." name="search"></input>
       <button type="submit">Search</button>
     </form>
+    
     </div>
+
   )
 }
+
