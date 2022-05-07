@@ -7,7 +7,6 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Homepage } from './homepage';
 import { Signin } from './Signin';
 import { Signup } from './Signup';
-import { LaundryMachines } from './laundryMachines'
 
 function App() {
 

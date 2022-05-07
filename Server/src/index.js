@@ -39,6 +39,8 @@ app.get('/getlaundrymachines', (req, res) => {
   })
  })
 
+
+
 app.listen(port, () => {
   console.log('up goes the server');
 });

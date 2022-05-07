@@ -19,6 +19,7 @@ export function Homepage() {
     else if (viewPage == 'dryers') {
       return <Dryers />
     }
+
   }
   
   return (
