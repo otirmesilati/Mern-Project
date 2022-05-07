@@ -4,7 +4,7 @@ const app = express();
 var cors = require('cors')
 app.use(cors())
 var bodyParser = require('body-parser')
-const {searchLaundryMachines, searchDryers,searchRefrigerators} = require('./mongoDB')
+const {searchLaundryMachines, searchDryers,searchRefrigerators,searchDishwashers,searchTelevisions,searchStoves,searchAirconditioners,searchOvens} = require('./mongoDB')
 
 // create application/json parser
 var jsonParser = bodyParser.json()
@@ -39,19 +39,69 @@ searchDryers({}).then((dryers) => {
 })
 })
 
- app.get('/getrefrigerators', (req, res) => {
-  console.log('im inside get refrigerators')
+app.get('/getrefrigerators', (req, res) => {
+console.log('im inside get refrigerators')
 
-  searchRefrigerators({}).then((refrigerators) => {
-    res.send(refrigerators)
-  }).catch((refrigeratorsError) => {
-    console.log(refrigeratorsError)
+searchRefrigerators({}).then((refrigerators) => {
+  res.send(refrigerators)
+}).catch((refrigeratorsError) => {
+  console.log(refrigeratorsError)
+})
+})
+
+app.get('/getdishwashers', (req, res) => {
+console.log('im inside get dishwashers')
+
+searchDishwashers({}).then((dishwashers) => {
+  res.send(dishwashers)
+}).catch((dishwashersError) => {
+  console.log(dishwashersError)
+})
+})
+
+
+app.get('/gettelevisions', (req, res) => {
+  console.log('im inside get televisions')
+  
+  searchTelevisions({}).then((televisions) => {
+    res.send(televisions)
+  }).catch((televisionsError) => {
+    console.log(televisionsError)
   })
- })
+  })
 
+app.get('/getstoves', (req, res) => {
+  console.log('im inside get stoves')
+  
+  searchStoves({}).then((stoves) => {
+    res.send(stoves)
+  }).catch((stovessError) => {
+    console.log(stovessError)
+  })
+  })
+
+app.get('/getairconditioners', (req, res) => {
+  console.log('im inside get airconditioners')
+  
+  searchAirconditioners({}).then((airconditioners) => {
+    res.send(airconditioners)
+  }).catch((airconditionersError) => {
+    console.log(airconditionersError)
+  })
+  })
+  
+app.get('/getovens', (req, res) => {
+  console.log('im inside get ovens')
+  
+  searchOvens({}).then((ovens) => {
+    res.send(ovens)
+  }).catch((ovensError) => {
+    console.log(ovensError)
+  })
+  })
 
 app.listen(port, () => {
-  console.log('up goes the server');
+  console.log('lets rocknroll');
 });
 
 

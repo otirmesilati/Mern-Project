@@ -13,6 +13,8 @@ export function Menu(params) {
   <a style={{cursor: 'pointer'}} onClick={() => {params.setViewPage('televisions')}}>Televisions</a>
   <a style={{cursor: 'pointer'}} onClick={() => {params.setViewPage('stoves')}}>Stoves</a>
   <a style={{cursor: 'pointer'}} onClick={() => {params.setViewPage('airconditioners')}}>Air Conditioners</a>
+  <a style={{cursor: 'pointer'}} onClick={() => {params.setViewPage('ovens')}}>Ovens</a>
+
 
   <div class='sidebar'> 
      <a href="/signin">Sign in</a>

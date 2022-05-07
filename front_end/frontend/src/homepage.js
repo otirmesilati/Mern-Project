@@ -6,6 +6,11 @@ import { LaundryMachines } from './laundryMachines'
 import { Promotions } from './Promotions';
 import { Dryers } from './dryers';
 import { Refrigerators } from './refrigerators';
+import { Dishwashers } from './dishwashers';
+import { Televisions } from './televisions';
+import { Stoves } from './stoves';
+import { Airconditioners } from './airconditioners';
+import { Ovens } from './ovens';
 
 export function Homepage() {
   const [viewPage, setViewPage] = useState('home')
@@ -24,17 +29,21 @@ export function Homepage() {
       return <Refrigerators />
     }
     else if (viewPage == 'dishwashers') {
-      <div>dishwashers</div>
+      return <Dishwashers />
     }
     else if (viewPage == 'televisions') {
-      <div>televisions</div>
+      return <Televisions />
     }
     else if (viewPage == 'stoves') {
-      <div>stoves</div>
+      return <Stoves />
     }
     else if (viewPage == 'airconditioners') {
-      <div>airconditioners</div>
+      return <Airconditioners />
     }
+    else if (viewPage == 'ovens') {
+      return <Ovens />
+    }
+    
   }
   
   return (
