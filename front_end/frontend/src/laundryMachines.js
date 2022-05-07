@@ -1,10 +1,13 @@
 import React, {useEffect, useState} from 'react'
 import './Signin.css'
 import Axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 export function LaundryMachines() {
   const [arrayOfMachines, setArrayOfMachines] = useState([])
+  const navigate = useNavigate();
+
   useEffect(() => {
-    getLaundryMachines()
+     getLaundryMachines()
   },[])
     function getLaundryMachines () {
       console.log('Sending request to backend')

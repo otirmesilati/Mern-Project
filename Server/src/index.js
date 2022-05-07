@@ -6,7 +6,8 @@ app.use(cors())
 var bodyParser = require('body-parser')
 const {searchLaundryMachines, searchDryers,
   searchRefrigerators,searchDishwashers,searchTelevisions,
-  searchStoves,searchAirconditioners,searchOvens} = require('./mongoDB')
+  searchStoves,searchAirconditioners,searchOvens,searchByString} = require('./mongoDB');
+const res = require('express/lib/response');
 
 // create application/json parser
 var jsonParser = bodyParser.json()
@@ -102,6 +103,20 @@ app.get('/getovens', (req, res) => {
     console.log(ovensError)
   })
   })
+
+app.get('/search', jsonParser, (req, res) => {
+  console.log('Receiving data from frontend')
+  console.log(search);
+  console.log('im before going to search')
+
+    searchByString({search}).then((foundProducts) => {
+      console.log(foundProducts);
+      res.send(foundProducts)
+    }).catch((foundProductsError) => {
+      console.log(foundProductsError)
+    })
+    })
+
 
 app.listen(port, () => {
   console.log('lets rocknroll');

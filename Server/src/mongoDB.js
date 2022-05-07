@@ -189,3 +189,90 @@ function searchOvens(object) {
 }
 exports.searchOvens = searchOvens;
 
+
+
+function searchStoves(object) {
+  async function run(object) {
+      try {
+        await client.connect();
+        console.log("im inside mongo db search for televisions")
+        var collection = client.db("stoves").collection("stoves_c")
+        // Query for a movie that has the title 'The Room'
+  
+  
+        const stoves = await collection.find(object);
+        // since this method returns the matched document, not a cursor, print it directly
+        return stoves.toArray()
+      }
+      catch(err) {
+       return err
+      }
+    }
+    return new Promise((resolve,reject) => {
+      resolve(run(object))
+    })  
+}
+exports.searchStoves = searchStoves;
+
+function searchAirconditioners(object) {
+  async function run(object) {
+      try {
+        await client.connect();
+        console.log("im inside mongo db search for televisions")
+        var collection = client.db("airconditioners").collection("airconditioners_c")
+        // Query for a movie that has the title 'The Room'
+  
+  
+        const airconditioners = await collection.find(object);
+        // since this method returns the matched document, not a cursor, print it directly
+        return airconditioners.toArray()
+      }
+      catch(err) {
+       return err
+      }
+    }
+    return new Promise((resolve,reject) => {
+      resolve(run(object))
+    })  
+}
+exports.searchAirconditioners = searchAirconditioners;
+
+function searchByString(object) {
+  async function run(object) {
+      try {
+        await client.connect();
+        console.log("im inside mongo db search by given string")
+        var collection1 = client.db("airconditioners").collection("airconditioners_c")
+        var collection2 = client.db("dishwashers").collection("dishwashers_c")
+        var collection3 = client.db("laundrymachines").collection("laundrymachines_c")
+        var collection4 = client.db("ovens").collection("ovens_c")
+        var collection5 = client.db("refrigerators").collection("refrigerators_c")
+        var collection6 = client.db("stoves").collection("stoves_c")
+        var collection7 = client.db("televisions").collection("televisions_c")
+        var collection8 = client.db("dryers").collection("dryers_c")
+
+        // Query for a movie that has the title 'The Room'
+  
+  
+        const one = await collection1.find( { $text: { $search: object } } );
+        const two = await collection2.find( { $text: { $search: object } } );
+        const three = await collection3.find( { $text: { $search: object } } );
+        const four = await collection4.find( { $text: { $search: object } } );
+        const five = await collection5.find( { $text: { $search: object } } );
+        const six = await collection6.find( { $text: { $search: object } } );
+        const seven = await collection7.find( { $text: { $search: object } } );
+        const eight = await collection8.find( { $text: { $search: object } } );
+
+        // since this method returns the matched document, not a cursor, print it directly
+        return one.toArray()
+      }
+      catch(err) {
+       return err
+      }
+    }
+    return new Promise((resolve,reject) => {
+      resolve(run(object))
+    })  
+}
+exports.searchByString = searchByString;
+
