@@ -4,7 +4,7 @@ const app = express();
 var cors = require('cors')
 app.use(cors())
 var bodyParser = require('body-parser')
-const {searchLaundryMachines, searchDryers} = require('./mongoDB')
+const {searchLaundryMachines, searchDryers,searchRefrigerators} = require('./mongoDB')
 
 // create application/json parser
 var jsonParser = bodyParser.json()
@@ -29,16 +29,25 @@ app.get('/getlaundrymachines', (req, res) => {
   })
  })
 
- app.get('/getdryers', (req, res) => {
-  console.log('im inside get dryers')
+app.get('/getdryers', (req, res) => {
+console.log('im inside get dryers')
 
-  searchDryers({}).then((dryers) => {
-    res.send(dryers)
-  }).catch((dryersError) => {
-    console.log(dryersError)
+searchDryers({}).then((dryers) => {
+  res.send(dryers)
+}).catch((dryersError) => {
+  console.log(dryersError)
+})
+})
+
+ app.get('/getrefrigerators', (req, res) => {
+  console.log('im inside get refrigerators')
+
+  searchRefrigerators({}).then((refrigerators) => {
+    res.send(refrigerators)
+  }).catch((refrigeratorsError) => {
+    console.log(refrigeratorsError)
   })
  })
-
 
 
 app.listen(port, () => {

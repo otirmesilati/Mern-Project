@@ -10,7 +10,6 @@ export function Menu(params) {
   <a style={{cursor: 'pointer'}} onClick={() => {params.setViewPage('dryers')}}>Dryers</a>
   <a style={{cursor: 'pointer'}} onClick={() => {params.setViewPage('refrigerators')}}>Refrigerators</a>
   <a style={{cursor: 'pointer'}} onClick={() => {params.setViewPage('dishwashers')}}>Dish Washers</a>
-  <a style={{cursor: 'pointer'}} onClick={() => {params.setViewPage('refrigerators')}}>Refrigerators</a>
   <a style={{cursor: 'pointer'}} onClick={() => {params.setViewPage('televisions')}}>Televisions</a>
   <a style={{cursor: 'pointer'}} onClick={() => {params.setViewPage('stoves')}}>Stoves</a>
   <a style={{cursor: 'pointer'}} onClick={() => {params.setViewPage('airconditioners')}}>Air Conditioners</a>

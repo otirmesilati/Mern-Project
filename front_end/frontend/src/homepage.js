@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { LaundryMachines } from './laundryMachines'
 import { Promotions } from './Promotions';
 import { Dryers } from './dryers';
+import { Refrigerators } from './refrigerators';
 
 export function Homepage() {
   const [viewPage, setViewPage] = useState('home')
@@ -19,7 +20,21 @@ export function Homepage() {
     else if (viewPage == 'dryers') {
       return <Dryers />
     }
-
+    else if (viewPage == 'refrigerators') {
+      return <Refrigerators />
+    }
+    else if (viewPage == 'dishwashers') {
+      <div>dishwashers</div>
+    }
+    else if (viewPage == 'televisions') {
+      <div>televisions</div>
+    }
+    else if (viewPage == 'stoves') {
+      <div>stoves</div>
+    }
+    else if (viewPage == 'airconditioners') {
+      <div>airconditioners</div>
+    }
   }
   
   return (
