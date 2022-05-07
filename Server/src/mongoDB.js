@@ -171,7 +171,7 @@ function searchOvens(object) {
       try {
         await client.connect();
         console.log("im inside mongo db search for ovens")
-        var collection = client.db("ovens").collection("ovens_C")
+        var collection = client.db("ovens").collection("ovens_c")
         // Query for a movie that has the title 'The Room'
   
   

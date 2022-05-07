@@ -4,7 +4,9 @@ const app = express();
 var cors = require('cors')
 app.use(cors())
 var bodyParser = require('body-parser')
-const {searchLaundryMachines, searchDryers,searchRefrigerators,searchDishwashers,searchTelevisions,searchStoves,searchAirconditioners,searchOvens} = require('./mongoDB')
+const {searchLaundryMachines, searchDryers,
+  searchRefrigerators,searchDishwashers,searchTelevisions,
+  searchStoves,searchAirconditioners,searchOvens} = require('./mongoDB')
 
 // create application/json parser
 var jsonParser = bodyParser.json()
@@ -94,6 +96,7 @@ app.get('/getovens', (req, res) => {
   console.log('im inside get ovens')
   
   searchOvens({}).then((ovens) => {
+    console.log(ovens);
     res.send(ovens)
   }).catch((ovensError) => {
     console.log(ovensError)
