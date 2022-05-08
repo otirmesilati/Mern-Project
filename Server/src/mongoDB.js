@@ -31,6 +31,7 @@ function searchDryers(object) {
   async function run(object) {
       try {
         await client.connect();
+        console.log('sucess to log in')
         var collection = client.db("dryers").collection("dryers_c")
         // Query for a movie that has the title 'The Room'
   
@@ -40,6 +41,7 @@ function searchDryers(object) {
         return dryers.toArray()
       }
       catch(err) {
+        
        return err
       }
     }
@@ -237,11 +239,11 @@ function searchAirconditioners(object) {
 }
 exports.searchAirconditioners = searchAirconditioners;
 
-function searchByString(object) {
-  async function run(object) {
+function searchByString() {
+  async function run() {
       try {
         await client.connect();
-        console.log("im inside mongo db search by given string")
+        console.log('tornado')
         var collection1 = client.db("airconditioners").collection("airconditioners_c")
         var collection2 = client.db("dishwashers").collection("dishwashers_c")
         var collection3 = client.db("laundrymachines").collection("laundrymachines_c")
@@ -250,18 +252,11 @@ function searchByString(object) {
         var collection6 = client.db("stoves").collection("stoves_c")
         var collection7 = client.db("televisions").collection("televisions_c")
         var collection8 = client.db("dryers").collection("dryers_c")
-
         // Query for a movie that has the title 'The Room'
-  
-  
-        const one = await collection1.find( { $text: { $search: object } } );
-        const two = await collection2.find( { $text: { $search: object } } );
-        const three = await collection3.find( { $text: { $search: object } } );
-        const four = await collection4.find( { $text: { $search: object } } );
-        const five = await collection5.find( { $text: { $search: object } } );
-        const six = await collection6.find( { $text: { $search: object } } );
-        const seven = await collection7.find( { $text: { $search: object } } );
-        const eight = await collection8.find( { $text: { $search: object } } );
+
+        //// tornado
+        const one = await collection1.find( {brand: 'tornado' } )
+
 
         // since this method returns the matched document, not a cursor, print it directly
         return one.toArray()
@@ -271,7 +266,7 @@ function searchByString(object) {
       }
     }
     return new Promise((resolve,reject) => {
-      resolve(run(object))
+      resolve(run())
     })  
 }
 exports.searchByString = searchByString;

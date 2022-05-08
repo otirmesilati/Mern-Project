@@ -4,12 +4,14 @@ import './SearchField.css'
 import axios from 'axios'
 import { useState } from 'react'
 export function SearchField() {
-  const [searchString, setSearchString ]= useState('')
+  const [test, settest ]= useState('')
 
-  function passVariablesToBackend () {
+  function passToBackend () {
     console.log('Sending request to backend')
-    axios.get('http://localhost:5001/search', {
-      search: searchString,
+    console.log(test)
+
+    axios.post('http://localhost:5001/search', {
+      test_data: test,
     }).then(res => {
       console.log('Received response from back - response below');
       console.log(res.data);
@@ -19,8 +21,8 @@ export function SearchField() {
   }
   return (
     <div class="search-container">
-      <input type="text" onChange={event => setSearchString(event.target.value)} placeholder="Search product by name.." name="search"></input>
-      <button type="submit" onClick={passVariablesToBackend}>Search</button>
+      <input value={test} onChange={event => {settest(event.target.value)}} type="text" placeholder='search by string'></input>
+      <button onClick={() => {passToBackend()}}>Press here</button>
     
     </div>
 

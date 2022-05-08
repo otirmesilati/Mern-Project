@@ -12,16 +12,7 @@ const res = require('express/lib/response');
 // create application/json parser
 var jsonParser = bodyParser.json()
 
-app.post('/login', jsonParser, (req, res) => {
- console.log('Receiving data from frontend')
-  console.log(req.body);
-  var email = req.body.email_data
-  if(email.includes('alex') == true) {
-    res.send('FOUND').sendStatus(200)
-  } else {
-    res.send('NOT FOUND').sendStatus(404)
-  }
-})
+
 
 app.get('/getlaundrymachines', (req, res) => {
 
@@ -38,6 +29,8 @@ console.log('im inside get dryers')
 searchDryers({}).then((dryers) => {
   res.send(dryers)
 }).catch((dryersError) => {
+  console.log('failed to pull')
+
   console.log(dryersError)
 })
 })
@@ -104,18 +97,35 @@ app.get('/getovens', (req, res) => {
   })
   })
 
-app.get('/search', jsonParser, (req, res) => {
-  console.log('Receiving data from frontend')
-  console.log(search);
-  console.log('im before going to search')
+app.post('/search', jsonParser, (req, res) => {
+  console.log('Receiving data from frontend-search')
+  console.log(req.body.test_data)
+  var search1 = req.body.test_data
 
-    searchByString({search}).then((foundProducts) => {
-      console.log(foundProducts);
-      res.send(foundProducts)
-    }).catch((foundProductsError) => {
-      console.log(foundProductsError)
-    })
-    })
+
+  searchByString({}).then((sendToFront) => {
+    console.log('here what data i got from-search')
+
+    console.log(sendToFront);
+    res.send(sendToFront)
+  }).catch((sendToFrontError) => {
+    console.log(sendToFrontError)
+  })
+})
+
+app.post('/login', jsonParser, (req, res) => {
+  console.log('Receiving data from frontend')
+    console.log(req.body);
+    var email = req.body.email_data
+    if(email.includes('alex') == true) {
+      res.send('FOUND').sendStatus(200)
+    } else {
+      res.send('NOT FOUND').sendStatus(404)
+    }
+  })
+
+
+
 
 
 app.listen(port, () => {
