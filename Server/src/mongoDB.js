@@ -239,35 +239,42 @@ function searchAirconditioners(object) {
 }
 exports.searchAirconditioners = searchAirconditioners;
 
-function searchByString(searchvalue) {
-  async function run(searchvalue) {
+function searchByString(object) {
+  async function run(object) {
       try {
         await client.connect();
         console.log('im searching on db for : ')
-        console.log(searchvalue)
+        console.log(object)
         
 
 
         var collection1 = client.db("airconditioners").collection("airconditioners_c")
-      //  var collection2 = client.db("dishwashers").collection("dishwashers_c")
-      //  var collection3 = client.db("laundrymachines").collection("laundrymachines_c")
-      //  var collection4 = client.db("ovens").collection("ovens_c")
-     //   var collection5 = client.db("refrigerators").collection("refrigerators_c")
-      //  var collection6 = client.db("stoves").collection("stoves_c")
-      //  var collection7 = client.db("televisions").collection("televisions_c")
-      //  var collection8 = client.db("dryers").collection("dryers_c")
+        var collection2 = client.db("dishwashers").collection("dishwashers_c")
+        var collection3 = client.db("laundrymachines").collection("laundrymachines_c")
+        var collection4 = client.db("ovens").collection("ovens_c")
+        var collection5 = client.db("refrigerators").collection("refrigerators_c")
+        var collection6 = client.db("stoves").collection("stoves_c")
+        var collection7 = client.db("televisions").collection("televisions_c")
+        var collection8 = client.db("dryers").collection("dryers_c")
         // Query for a movie that has the title 'The Room'
-        const one = await collection1.find({brand : 'electra'})
-       
+        const one = await collection1.find({brand : object})
+        const two = await collection2.find({brand : object})
+        const three = await collection3.find({brand : object})
+        const four = await collection4.find({brand : object})
+        const five = await collection5.find({brand : object})
+        const six = await collection6.find({brand : object})
+        const seven = await collection7.find({brand : object})
+        const eight = await collection8.find({brand : object})
+
         // since this method returns the matched document, not a cursor, print it directly
-        return one.toArray()
+        return (one,two,three,four,five,six,seven,eight).toArray()
       }
       catch(err) {
        return err
       }
     }
     return new Promise((resolve,reject) => {
-      resolve(run(searchvalue))
+      resolve(run(object))
     })  
 }
 exports.searchByString = searchByString

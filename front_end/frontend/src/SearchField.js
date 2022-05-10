@@ -39,10 +39,9 @@ export function SearchField() {
   
   return (
     <div class="search-container">
-      <input value={test} onChange={event => {settest(event.target.value)}} type="text" placeholder='search by string'></input>
+      <input value={test} onChange={event => {settest(event.target.value)}} type="text" placeholder='search by brand'></input>
       <button onClick={() => {passToBackend()}}>Search</button>
       <RenderFoundProducts />
-
     </div>
 
 

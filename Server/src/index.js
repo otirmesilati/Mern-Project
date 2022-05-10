@@ -103,7 +103,7 @@ app.post('/search', jsonParser, (req, res) => {
   var search1 = req.body.test_data
   console.log(search1)
 
-  searchByString({search1}).then((sendToFront) => {
+  searchByString(search1).then((sendToFront) => {
     console.log('here what data i got from-search')
 
     console.log(sendToFront);
