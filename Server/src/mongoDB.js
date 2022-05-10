@@ -239,25 +239,22 @@ function searchAirconditioners(object) {
 }
 exports.searchAirconditioners = searchAirconditioners;
 
-function searchByString() {
-  async function run() {
+function searchByString(searchvalue) {
+  async function run(searchvalue) {
       try {
         await client.connect();
-        console.log('tornado')
+        console.log('im searching on db for : ')
+        console.log(searchvalue)
         var collection1 = client.db("airconditioners").collection("airconditioners_c")
-        var collection2 = client.db("dishwashers").collection("dishwashers_c")
-        var collection3 = client.db("laundrymachines").collection("laundrymachines_c")
-        var collection4 = client.db("ovens").collection("ovens_c")
-        var collection5 = client.db("refrigerators").collection("refrigerators_c")
-        var collection6 = client.db("stoves").collection("stoves_c")
-        var collection7 = client.db("televisions").collection("televisions_c")
-        var collection8 = client.db("dryers").collection("dryers_c")
+      //  var collection2 = client.db("dishwashers").collection("dishwashers_c")
+      //  var collection3 = client.db("laundrymachines").collection("laundrymachines_c")
+      //  var collection4 = client.db("ovens").collection("ovens_c")
+     //   var collection5 = client.db("refrigerators").collection("refrigerators_c")
+      //  var collection6 = client.db("stoves").collection("stoves_c")
+      //  var collection7 = client.db("televisions").collection("televisions_c")
+      //  var collection8 = client.db("dryers").collection("dryers_c")
         // Query for a movie that has the title 'The Room'
-
-        //// tornado
-        const one = await collection1.find( {brand: 'tornado' } )
-
-
+        const one = await collection1.find({ brand : 'searchvalue' })
         // since this method returns the matched document, not a cursor, print it directly
         return one.toArray()
       }
@@ -266,8 +263,8 @@ function searchByString() {
       }
     }
     return new Promise((resolve,reject) => {
-      resolve(run())
+      resolve(run(searchvalue))
     })  
 }
-exports.searchByString = searchByString;
+exports.searchByString = searchByString
 

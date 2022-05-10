@@ -19,6 +19,8 @@ export function SearchField() {
       console.log(err);
     })
   }
+
+  
   return (
     <div class="search-container">
       <input value={test} onChange={event => {settest(event.target.value)}} type="text" placeholder='search by string'></input>
