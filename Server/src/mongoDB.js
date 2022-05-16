@@ -245,9 +245,6 @@ function searchByString(object) {
         await client.connect();
         console.log('im searching on db for : ')
         console.log(object)
-        
-
-
         var collection1 = client.db("airconditioners").collection("airconditioners_c")
         var collection2 = client.db("dishwashers").collection("dishwashers_c")
         var collection3 = client.db("laundrymachines").collection("laundrymachines_c")
@@ -258,13 +255,21 @@ function searchByString(object) {
         var collection8 = client.db("dryers").collection("dryers_c")
         // Query for a movie that has the title 'The Room'
         const one = await collection1.find({brand : object})
+
         const two = await collection2.find({brand : object})
+
         const three = await collection3.find({brand : object})
+
         const four = await collection4.find({brand : object})
+
         const five = await collection5.find({brand : object})
+
         const six = await collection6.find({brand : object})
+
         const seven = await collection7.find({brand : object})
+
         const eight = await collection8.find({brand : object})
+
 
         // since this method returns the matched document, not a cursor, print it directly
         return (one,two,three,four,five,six,seven,eight).toArray()
