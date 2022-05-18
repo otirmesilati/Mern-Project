@@ -120,14 +120,32 @@ app.post('/login', jsonParser, (req, res) => {
     var pw = req.body.password_data
     console.log(email,pw)
     console.log(searchUser(email,pw))
-    if(searchUser(email,pw)) {
-      res.send('FOUND')
-    } 
-    else {
-      res.send('NOT FOUND')
-    }
+    searchUser(email,pw).then((sendToFront) => {
+      console.log('here what data i got from-search')
+      console.log(sendToFront);
+      res.send(sendToFront)
+    }).catch((sendToFrontError) => {
+      console.log(sendToFrontError)
+    })
   })
 
+
+  app.post('/register', jsonParser, (req, res) => {
+    console.log('Receiving data from frontend')
+      console.log(req.body);
+      var email = req.body.email_data
+      var pw = req.body.password_data
+      console.log(email,pw)
+      console.log(searchUser(email,pw))
+      registerUser(email,pw).then((sendToFront) => {
+        console.log('here what data i got from-search')
+        console.log(sendToFront);
+        res.send(sendToFront)
+      }).catch((sendToFrontError) => {
+        console.log(sendToFrontError)
+      })
+    })
+  
 
 
 

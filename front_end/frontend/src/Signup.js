@@ -8,7 +8,7 @@ export function Signup() {
   
     function passVariablesToBackend () {
       console.log('Sending request to backend')
-      Axios.post('http://localhost:5000/login', {
+      Axios.post('http://localhost:5000/register', {
         email_data: Email,
         password_data: Password
       }).then(res => {
@@ -16,7 +16,7 @@ export function Signup() {
         console.log(res.data);
         var element = document.getElementById('test')
         element.innerText = res.data
-        if(res.data == 'FOUND') {
+        if(res.data) {
           element.style.background = 'green'
         } else {
           element.style.background = 'red'
