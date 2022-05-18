@@ -16,8 +16,9 @@ export function Signin() {
         console.log(res.data);
         var element = document.getElementById('test')
         element.innerText = res.data
-        if(res.data == 'FOUND') {
+        if(res.data ) {
           element.style.background = 'green'
+          ///// לעבור לדף הבית כמחובר
         } else {
           element.style.background = 'red'
         }
