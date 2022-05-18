@@ -119,6 +119,7 @@ app.post('/login', jsonParser, (req, res) => {
     var email = req.body.email_data
     var pw = req.body.password_data
     console.log(email,pw)
+    console.log(searchUser(email,pw))
     if(searchUser(email,pw)) {
       res.send('FOUND')
     } 
