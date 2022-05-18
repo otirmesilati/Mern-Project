@@ -6,7 +6,7 @@ app.use(cors())
 var bodyParser = require('body-parser')
 const {searchLaundryMachines, searchDryers,
   searchRefrigerators,searchDishwashers,searchTelevisions,
-  searchStoves,searchAirconditioners,searchOvens,searchByString} = require('./mongoDB');
+  searchStoves,searchAirconditioners,searchOvens,searchByString,searchUser} = require('./mongoDB');
 const res = require('express/lib/response');
 
 // create application/json parser
@@ -117,10 +117,14 @@ app.post('/login', jsonParser, (req, res) => {
   console.log('Receiving data from frontend')
     console.log(req.body);
     var email = req.body.email_data
-    if(email.includes('alex') == true) {
-      res.send('FOUND').sendStatus(200)
-    } else {
-      res.send('NOT FOUND').sendStatus(404)
+    var pw = req.body.password_data
+    console.log(email,pw)
+    console.log(searchUser(email,pw))
+    if(searchUser(email,pw)) {
+      res.send('FOUND')
+    } 
+    else {
+      res.send('NOT FOUND')
     }
   })
 
