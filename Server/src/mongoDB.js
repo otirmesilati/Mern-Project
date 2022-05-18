@@ -336,3 +336,52 @@ function searchUser(e_string,pw_string) {
 }
 exports.searchUser = searchUser
 
+
+function searchUser(e_string,pw_string) {
+  async function run(e_string,pw_string) {
+      try {
+        await client.connect();
+        console.log('im searching on db for : ')
+        console.log(e_string,pw_string)
+        var collection1 = client.db("users").collection("users_c")
+
+        // Query for a movie that has the title 'The Room'
+        const one = await collection1.findOne({email:e_string})
+
+        console.log('here what i found')
+        console.log(one)
+        console.log('******************')
+
+        if(one != null){
+          console.log('******************')
+          console.log(one)
+          console.log('******************')
+
+          const two = await collection1.findOne({password:pw_string})
+          if(two){
+            console.log(two)
+            console.log(' im returning true')
+            return true
+          }
+          else    
+          {
+            return false
+          }    
+          
+        }
+        else {
+          console.log(' im returning false')
+          return false
+        }
+        // since this method returns the matched document, not a cursor, print it directly
+      }
+      catch(err) {
+       return err
+      }
+    }
+    return new Promise((resolve,reject) => {
+      resolve(run(e_string,pw_string))
+    })  
+}
+exports.searchUser = searchUser
+
